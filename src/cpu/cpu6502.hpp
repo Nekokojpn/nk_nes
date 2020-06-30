@@ -7,7 +7,7 @@ typedef struct {
    unsigned short pc;
    unsigned char sp_hi;
    unsigned char sp_lo;
-   unsigned char p;
+   unsigned char p;  //Status https://kikb.web.fc2.com/6502/index.html#cpu6502_flagregister
 } Registers;
 
 extern CPU6502Inst* decoder[256];

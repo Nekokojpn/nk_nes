@@ -1,14 +1,26 @@
 #include <iostream>
 
-enum class AddressType {
-
+enum class AddressingMode {
+   Accumulator,
+   Implied,
+   Immediate,
+   ZeroPage,
+   ZeroPageIndexX,
+   ZeroPageIndexY,
+   Absolute,
+   AbsoludeIndexX,
+   AbsoluteIndexY,
+   Indirect,
+   IndexIndirect,
+   IndirectIndex,
+   Relative
 };
 
 class CPU6502Inst {
 public:
    uint8_t hex;
    uint8_t opcode;
-   AddressType ty;
+   AddressingMode ty;
    int inst_len;
    int ck; //Cycle
    std::string desc;
