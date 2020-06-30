@@ -2,10 +2,6 @@
 
 #include "cpu6502.hpp"
 
-static void nk_nes_init() {
-
-}
-
 void cpu_reset(CPU6502* cpu) {
    cpu->setPInterruptFlagOn();
    cpu->setPBreakCommandFlagOff();

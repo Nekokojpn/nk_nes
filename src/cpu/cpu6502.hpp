@@ -11,8 +11,6 @@ typedef struct {
 } Registers;
 
 
-#define ADD_INSTRUCTION(hex, opcode, ty, inst_len, ck, desc)   decoder[hex] = new CPU6502Inst(hex, opcode, ty, inst_len, ck, desc);
-
 class CPU6502 {
 public:
    Registers* registers;
