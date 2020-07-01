@@ -7,7 +7,31 @@ enum class Op {
    SBC,
    BRK,
    ORA,
-   AND
+   AND,
+   ASL,
+   BCC,
+   BCS,
+   BEQ,
+   BIT,
+   BMI,
+   BNE,
+   BPL,
+   BVS,
+   CLC,
+   CLD,
+   CLI,
+   CLV,
+   CMP,
+   CPX,
+   CPY,
+   DEC,
+   DEX,
+   DEY,
+   EOR,
+   INC,
+   INX,
+   INY,
+   
 };
 
 //AddressingModeName,   //num of operand
@@ -19,7 +43,7 @@ enum class AddressingMode {
    ZeroPageIndexX,//1
    ZeroPageIndexY,//1
    Absolute,      //2
-   AbsoludeIndexX,//2
+   AbsoluteIndexX,//2
    AbsoluteIndexY,//2
    Indirect,      //2
    XIndexIndirect, //1
