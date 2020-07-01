@@ -1,13 +1,13 @@
 #include "cpu_inst.hpp"
 
 typedef struct {
-   unsigned char a;
-   unsigned char x;
-   unsigned char y;
-   unsigned short pc;
-   unsigned char sp_hi;
-   unsigned char sp_lo;
-   unsigned char p;  //Status https://kikb.web.fc2.com/6502/index.html#cpu6502_flagregister
+   uint8_t a;
+   uint8_t x;
+   uint8_t y;
+   uint16_t pc;
+   uint8_t sp_hi;
+   uint8_t sp_lo;
+   uint8_t p;  //Status https://kikb.web.fc2.com/6502/index.html#cpu6502_flagregister
 } Registers;
 
 

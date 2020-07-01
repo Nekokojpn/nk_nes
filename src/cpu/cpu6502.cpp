@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "cpu6502.hpp"
 
 void cpu_reset(CPU6502* cpu) {
