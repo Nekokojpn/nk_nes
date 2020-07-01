@@ -1,4 +1,6 @@
-#include "cpu_inst.hpp"
+#include "common.hpp"
+
+class CPU6502Inst;
 
 typedef struct {
    uint8_t a;
