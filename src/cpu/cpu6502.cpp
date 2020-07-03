@@ -5,6 +5,14 @@ void cpu_reset(CPU6502* cpu) {
    cpu->setPBreakCommandFlagOff();
 }
 
+uint8_t CPU6502::read(uint8_t address) {
+
+}
+
+uint8_t CPU6502::fetch() {
+   return this->read(this->registers->pc++);
+}
+
 void CPU6502::setPCarryFlagOn() {
    this->registers->p = this->registers->p | 0x01;
 }

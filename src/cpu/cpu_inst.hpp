@@ -1,4 +1,4 @@
-#include "common.hpp"
+#include "../common.hpp"
 
 #define ADD_INSTRUCTION(hex, opcode, ty, inst_len, ck)   decoder[hex] = new CPU6502Inst(hex, opcode, ty, inst_len, ck);
 

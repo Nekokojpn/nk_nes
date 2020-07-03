@@ -1,6 +1,7 @@
-#include "common.hpp"
+#include "../common.hpp"
 
 class CPU6502Inst;
+class CPU6502Bus;
 
 typedef struct {
    uint8_t a;
@@ -17,6 +18,7 @@ class CPU6502 {
 public:
    Registers* registers;
    CPU6502Inst* decoder[256];
+   CPU6502Bus* bus;
    CPU6502(Registers* _registers) : registers(_registers) {};
    void setPCarryFlagOn();
    void setPCarryFlagOff();
@@ -34,4 +36,7 @@ public:
    void setPOverflowFlagOff();
    void setPNegativeFlagOn();
    void setPNegativeFlagOff();
+   uint8_t read(uint8_t address);
+   uint8_t fetch();
+   uint8_t fetchOpeland();
 };
