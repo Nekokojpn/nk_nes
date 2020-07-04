@@ -5,18 +5,8 @@
 #include <string>
 #include <vector>
 
-typedef struct {
-   uint8_t a;
-   uint8_t x;
-   uint8_t y;
-   uint16_t pc;
-   uint8_t sp_hi;
-   uint8_t sp_lo;
-   uint8_t p;  //Status https://kikb.web.fc2.com/6502/index.html#cpu6502_flagregister
-} Registers;
 
-
-
+class Registers;
 class CPU6502Bus;
 class CPU6502Inst;
 class PPU;
@@ -28,12 +18,15 @@ void define_instructions();
 
 extern CPU6502Inst* decoder[256];
 
-
-class CPU6502 {
+class Registers {
 public:
-   Registers* registers;
-   CPU6502Bus* bus;
-   CPU6502(Registers* _registers, CPU6502Bus* _bus) : registers(_registers), bus(_bus) {};
+   uint8_t a;
+   uint8_t x;
+   uint8_t y;
+   uint16_t pc;
+   uint8_t sp_hi;
+   uint8_t sp_lo;
+   uint8_t p;  //Status https://kikb.web.fc2.com/6502/index.html#cpu6502_flagregister
    void setPCarryFlagOn();
    void setPCarryFlagOff();
    bool getPCarryFlag();
@@ -58,6 +51,13 @@ public:
    void setPNegativeFlagOn();
    void setPNegativeFlagOff();
    bool getPNegativeFlag();
+};
+
+class CPU6502 {
+public:
+   Registers* registers;
+   CPU6502Bus* bus;
+   CPU6502(Registers* _registers, CPU6502Bus* _bus) : registers(_registers), bus(_bus) {};
    uint8_t read(uint8_t address);
    uint8_t fetch();
    uint8_t fetchOpeland();
