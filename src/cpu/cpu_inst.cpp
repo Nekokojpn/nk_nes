@@ -1,4 +1,6 @@
-#include "cpu_inst.hpp"
+#include "../common.hpp"
+
+CPU6502Inst* decoder[256];
 
 void define_instructions() {
 
