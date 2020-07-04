@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <tuple>
 
 
 class Registers;
@@ -27,6 +28,9 @@ public:
    uint8_t sp_hi;
    uint8_t sp_lo;
    uint8_t p;  //Status https://kikb.web.fc2.com/6502/index.html#cpu6502_flagregister
+   void init();
+   uint16_t getPC();
+   void setPC(uint16_t hex);
    void setPCarryFlagOn();
    void setPCarryFlagOff();
    bool getPCarryFlag();
@@ -61,6 +65,8 @@ public:
    uint8_t read(uint8_t address);
    uint8_t fetch();
    uint8_t fetchOpeland();
+   void reset();
+   void exec(uint8_t opcode);
    void init();
 };
 
@@ -162,8 +168,11 @@ public:
 
 class RAM {
 public:
-   uint8_t memory[0x800];
+   uint8_t memory[0xFFFF];
    uint8_t read(uint8_t address);
+   //Non maskable interrupt
+   uint16_t getReset();
+   void setReset(uint8_t lo, uint8_t hi);
    void debug_init();
    void print();
 };

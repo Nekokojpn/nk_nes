@@ -1,5 +1,17 @@
 #include "../common.hpp"
 
+void Registers::init() {
+   
+}
+
+uint16_t Registers::getPC() {
+   return this->pc;
+}
+
+void Registers::setPC(uint16_t hex) {
+   this->pc = hex;
+}
+
 void Registers::setPCarryFlagOn() {
    this->p = this->p | 0x01;
 }

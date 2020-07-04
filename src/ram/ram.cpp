@@ -19,3 +19,12 @@ void RAM::print() {
       printf("%3x ", this->memory[i]);
    }
 }
+
+uint16_t RAM::getReset() {
+   return (this->memory[0xFFFD] << 8) + this->memory[0xFFFC];
+}
+
+void RAM::setReset(uint8_t lo, uint8_t hi) {
+   this->memory[0xFFFC] = lo;
+   this->memory[0xFFFD] = hi;
+}
