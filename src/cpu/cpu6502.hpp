@@ -1,7 +1,7 @@
 #include "../common.hpp"
+#include "./cpu_bus.hpp"
+#include "./cpu_inst.hpp"
 
-class CPU6502Inst;
-class CPU6502Bus;
 
 typedef struct {
    uint8_t a;
