@@ -179,7 +179,9 @@ public:
 
 class Cassette {
 public:
-
+   const char* file_name;
+   char content[40976];
+   Cassette(const char* _file_name);
 };
 
 class PPU {
