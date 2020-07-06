@@ -17,8 +17,18 @@ int main (int argc, char** argv) {
       new Registers(),
       new CPU6502Bus(new PPU(), new Cassette(argv[1]), new RAM())
    );
+   cpu->bus->cassette->copy_to_ram(cpu->bus->ram);
    cpu->init();
    cpu->reset();
+   //printf("%x", cpu->bus->ram->read(0x8000));
+   printf("%x", cpu->fetch());
+   printf("%x", cpu->fetch());
+   printf("%x", cpu->fetch());
+   printf("%x", cpu->fetch());
+   if(cpu->fetch() != 0x4E || cpu->fetch() != 0x45 || cpu->fetch() != 0x53 || cpu->fetch() != 0x1A) {
+      std::cout << "NES cassette header is invalid\n";
+      return 1;
+   }
    //nes->bus->ram->debug_init();
-   //nes->bus->ram->print();
+   
 }

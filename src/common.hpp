@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <tuple>
+#include <memory.h>
 
 
 class Registers;
@@ -169,7 +170,7 @@ public:
 class RAM {
 public:
    uint8_t memory[0xFFFF];
-   uint8_t read(uint8_t address);
+   uint16_t read(uint16_t address);
    //Non maskable interrupt
    uint16_t getReset();
    void setReset(uint8_t lo, uint8_t hi);
@@ -182,6 +183,7 @@ public:
    const char* file_name;
    char content[40976];
    Cassette(const char* _file_name);
+   void copy_to_ram(RAM* ram);
 };
 
 class PPU {

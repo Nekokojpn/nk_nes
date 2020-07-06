@@ -8,13 +8,17 @@ Cassette::Cassette(const char* _file_name) {
         return;
     }
 
-    if(fread(content, sizeof(content[0]), sizeof(content), fp) < sizeof(content) ){
+    if(fread(content, sizeof(content[0]), sizeof(content), fp) < sizeof(content)) {
         std::cout << "Cannot read specified nes file\n";
         return;
     }
 
-    if(fclose(fp) == EOF ){
+    if(fclose(fp) == EOF ) {
         std::cout << "Cannot close fp";
         return;
     }
+}
+
+void Cassette::copy_to_ram(RAM* ram) {
+    memcpy(&ram->memory[0x8000], this->content, sizeof(0x4000));
 }
