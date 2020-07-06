@@ -20,14 +20,16 @@ int main (int argc, char** argv) {
    cpu->bus->cassette->copy_to_ram(cpu->bus->ram);
    cpu->init();
    cpu->reset();
-   //printf("%x", cpu->bus->ram->read(0x8000));
-   printf("%x", cpu->fetch());
-   printf("%x", cpu->fetch());
-   printf("%x", cpu->fetch());
-   printf("%x", cpu->fetch());
    if(cpu->fetch() != 0x4E || cpu->fetch() != 0x45 || cpu->fetch() != 0x53 || cpu->fetch() != 0x1A) {
       std::cout << "NES cassette header is invalid\n";
       return 1;
+   }
+   cpu->registers->pc += 12;
+   for(;;) {
+      cpu->exec(cpu->fetch());
+      cpu->bus->ram->debug_print();
+      cpu->registers->debug_print();
+      int x;std::cin>>x;
    }
    //nes->bus->ram->debug_init();
    

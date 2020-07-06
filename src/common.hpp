@@ -30,8 +30,19 @@ public:
    uint8_t sp_lo;
    uint8_t p;  //Status https://kikb.web.fc2.com/6502/index.html#cpu6502_flagregister
    void init();
-   uint16_t getPC();
+   void debug_print();
+   void setA(uint8_t);
+   uint8_t getA();
+   void setX(uint8_t);
+   uint8_t getX();
+   void setY(uint8_t);
+   uint8_t getY();
    void setPC(uint16_t hex);
+   uint16_t getPC();
+   void setSP_lo(uint8_t);
+   uint8_t getSP_lo();
+   void setSP_hi(uint8_t);
+   uint8_t getSP_hi();
    void setPCarryFlagOn();
    void setPCarryFlagOff();
    bool getPCarryFlag();
@@ -63,7 +74,7 @@ public:
    Registers* registers;
    CPU6502Bus* bus;
    CPU6502(Registers* _registers, CPU6502Bus* _bus) : registers(_registers), bus(_bus) {};
-   uint8_t read(uint8_t address);
+   uint8_t read(uint16_t address);
    uint8_t fetch();
    uint8_t fetchOpeland();
    void reset();
@@ -77,7 +88,7 @@ public:
    Cassette* cassette;
    RAM* ram;
    CPU6502Bus(PPU* _ppu, Cassette* _cassette, RAM* _ram) : ppu(_ppu), cassette(_cassette), ram(_ram) {};
-   uint8_t read(uint8_t address);
+   uint8_t read(uint16_t address);
 };
 
 #define ADD_INSTRUCTION(hex, opcode, ty, inst_len, ck)   decoder[hex] = new CPU6502Inst(hex, opcode, ty, inst_len, ck);
@@ -170,12 +181,12 @@ public:
 class RAM {
 public:
    uint8_t memory[0xFFFF];
-   uint16_t read(uint16_t address);
+   uint8_t read(uint16_t address);
    //Non maskable interrupt
    uint16_t getReset();
    void setReset(uint8_t lo, uint8_t hi);
    void debug_init();
-   void print();
+   void debug_print();
 };
 
 class Cassette {

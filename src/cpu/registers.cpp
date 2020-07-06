@@ -4,6 +4,55 @@ void Registers::init() {
    
 }
 
+void Registers::debug_print() {
+   printf("accu = %x\n", this->a);
+   printf("indx = %x\n", this->x);
+   printf("indy = %x\n", this->y);
+   printf("proc = %x\n", this->pc);
+   printf("sphi = %x\n", this->sp_hi);
+   printf("splo = %x\n", this->sp_lo);
+   printf("carr = %x\n", this->getPCarryFlag());
+   printf("zero = %x\n", this->getPZeroFlag());
+   printf("intr = %x\n", this->getPInterruptFlag());
+   printf("deci = %x\n", this->getPDecimalModeFlag());
+   printf("brek = %x\n", this->getPBreakCommandFlag());
+   printf("rsve = %x\n", this->getPReserveFlag());
+   printf("ovfl = %x\n", this->getPOverflowFlag());
+   printf("negt = %x\n", this->getPNegativeFlag());
+}
+
+void Registers::setA(uint8_t n) {
+   this->a = n;
+}
+uint8_t Registers::getA() {
+   return this->a;
+}
+void Registers::setX(uint8_t n) {
+   this->x = n;
+}
+uint8_t Registers::getX() {
+   return this->x;
+}
+void Registers::setY(uint8_t n) {
+   this->y = n;
+}
+uint8_t Registers::getY() {
+   return this->y;
+}
+
+void Registers::setSP_lo(uint8_t n) {
+   this->sp_lo = n;
+}
+uint8_t Registers::getSP_lo() {
+   return this->sp_lo;
+}
+void Registers::setSP_hi(uint8_t n) {
+   this->sp_hi = n;
+}
+uint8_t Registers::getSP_hi() {
+   return this->sp_hi;
+}
+
 uint16_t Registers::getPC() {
    return this->pc;
 }

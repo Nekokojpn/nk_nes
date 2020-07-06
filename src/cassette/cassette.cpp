@@ -20,5 +20,5 @@ Cassette::Cassette(const char* _file_name) {
 }
 
 void Cassette::copy_to_ram(RAM* ram) {
-    memcpy(&ram->memory[0x8000], this->content, sizeof(0x4000));
+    memcpy(&ram->memory[0x8000], this->content, sizeof(char) * 0x4000);
 }
