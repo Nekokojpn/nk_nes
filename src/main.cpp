@@ -13,9 +13,20 @@ int main (int argc, char** argv) {
 		return 1;
 	}
    define_instructions();
+   auto ram = new RAM();
    auto cpu = new CPU6502(
       new Registers(),
-      new CPU6502Bus(new PPU(), new Cassette(argv[1]), new RAM())
+      new CPU6502Bus(
+		  new Ppu(
+			&ram->memory[0x2000],
+			&ram->memory[0x2001],
+			&ram->memory[0x2002],
+			&ram->memory[0x2003],
+			&ram->memory[0x2004],
+			&ram->memory[0x2005],
+			&ram->memory[0x2006],
+			&ram->memory[0x2007]
+		  ), new Cassette(argv[1]), ram)
    );
    cpu->bus->cassette->copy_to_ram(cpu->bus->ram);
    cpu->init();

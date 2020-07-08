@@ -1,6 +1,7 @@
 // nk_nes.cpp : Defines the entry point for the application.
 //
 
+#include "src/common.hpp"
 #include "framework.h"
 #include "nk_nes.h"
 
@@ -26,6 +27,40 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: Place code here.
+	define_instructions();
+	auto ram = new RAM();
+	auto cpu = new CPU6502(
+		new Registers(),
+		new CPU6502Bus(
+			new Ppu(
+				&ram->memory[0x2000],
+				&ram->memory[0x2001],
+				&ram->memory[0x2002],
+				&ram->memory[0x2003],
+				&ram->memory[0x2004],
+				&ram->memory[0x2005],
+				&ram->memory[0x2006],
+				&ram->memory[0x2007]
+			), new Cassette("D:\\nk_nes\\test\\hello.nes"), ram)
+	);
+	cpu->bus->cassette->copy_to_ram(cpu->bus->ram);
+	cpu->init();
+	cpu->reset();
+	if (cpu->fetch() != 0x4E || cpu->fetch() != 0x45 || cpu->fetch() != 0x53 || cpu->fetch() != 0x1A) {
+		std::cout << "NES cassette header is invalid\n";
+		return 1;
+	}
+	cpu->registers->pc += 12;
+	/*
+	for (;;) {
+		cpu->exec(cpu->fetch());
+		cpu->bus->ram->debug_print();
+		cpu->registers->debug_print();
+		int x; std::cin >> x;
+	}
+	*/
+	//nes->bus->ram->debug_init();
+
 
     // Initialize global strings
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -146,8 +181,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code that uses hdc here...
+			Rectangle(hdc, 0, 0, 256, 240);
+			SetPixel(hdc, 10, 10, 0xFF);
             EndPaint(hWnd, &ps);
+			Sleep(16);
         }
         break;
     case WM_DESTROY:
