@@ -1,4 +1,5 @@
-a.exe
-.vscode/
-main.exe
-.vs
+.vs/
+Debug/
+Log.txt
+*.sln
+*.vcxproj*

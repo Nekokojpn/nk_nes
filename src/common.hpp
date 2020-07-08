@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -6,6 +7,9 @@
 #include <vector>
 #include <tuple>
 #include <memory.h>
+#include <windows.h>
+
+#include "DxLib.h"
 
 
 class Registers;
@@ -211,6 +215,7 @@ public:
    uint8_t* maddr;
    uint8_t* data;
    uint8_t* scrl;
+   uint8_t* paddr;
    uint8_t* pdata;
    uint8_t memory[0x4000];
    Ppu(uint8_t* _ctrl,
@@ -219,6 +224,7 @@ public:
    uint8_t* _maddr,
    uint8_t* _data,
    uint8_t* _scrl,
+   uint8_t* _paddr,
    uint8_t* _pdata) :
-   ctrl(_ctrl), mask(_mask), stat(_status), maddr(_maddr), data(_data), scrl(_scrl), pdata(_pdata) {};
+   ctrl(_ctrl), mask(_mask), stat(_status), maddr(_maddr), data(_data), scrl(_scrl), paddr(_paddr), pdata(_pdata) {};
 };
