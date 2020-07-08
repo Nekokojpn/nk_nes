@@ -199,12 +199,16 @@ public:
    uint8_t read(uint16_t address);
 };
 
+#define CHR_ROM_START 0x8220
+
 class Cassette {
 public:
    const char* file_name;
    char content[40976];
    Cassette(const char* _file_name);
    void copy_to_ram(RAM* ram);
+   //Without offset
+   uint8_t read_chr(uint16_t address);
 };
 
 class Ppu {
