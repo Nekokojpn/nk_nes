@@ -1,3 +1,9 @@
 a.exe
 .vscode/
 main.exe
+Resource.h
+framework.h
+*.ico
+*.rc
+*.vcxproj*
+targetver.h
