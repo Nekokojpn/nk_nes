@@ -15,7 +15,7 @@ int main (int argc, char** argv) {
    define_instructions();
    auto cpu = new CPU6502(
       new Registers(),
-      new CPU6502Bus(new PPU(), new Cassette(argv[1]), new RAM())
+      new CPU6502Bus(new Ppu(), new Cassette(argv[1]), new RAM())
    );
    cpu->bus->cassette->copy_to_ram(cpu->bus->ram);
    cpu->init();

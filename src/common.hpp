@@ -11,7 +11,7 @@
 class Registers;
 class CPU6502Bus;
 class CPU6502Inst;
-class PPU;
+class Ppu;
 class Cassette;
 class RAM;
 
@@ -84,10 +84,10 @@ public:
 
 class CPU6502Bus {
 public:
-   PPU* ppu;
+   Ppu* ppu;
    Cassette* cassette;
    RAM* ram;
-   CPU6502Bus(PPU* _ppu, Cassette* _cassette, RAM* _ram) : ppu(_ppu), cassette(_cassette), ram(_ram) {};
+   CPU6502Bus(Ppu* _ppu, Cassette* _cassette, RAM* _ram) : ppu(_ppu), cassette(_cassette), ram(_ram) {};
    uint8_t read(uint16_t address);
 };
 
@@ -189,6 +189,12 @@ public:
    void debug_print();
 };
 
+class VRAM {
+public:
+   uint8_t memory[0x4000];
+   uint8_t read(uint16_t address);
+};
+
 class Cassette {
 public:
    const char* file_name;
@@ -197,6 +203,22 @@ public:
    void copy_to_ram(RAM* ram);
 };
 
-class PPU {
+class Ppu {
 public:
+   uint8_t* ctrl;
+   uint8_t* mask;
+   uint8_t* stat;
+   uint8_t* maddr;
+   uint8_t* data;
+   uint8_t* scrl;
+   uint8_t* pdata;
+   uint8_t memo
+   Ppu(uint8_t* _ctrl,
+   uint8_t* _mask,
+   uint8_t* _status,
+   uint8_t* _maddr,
+   uint8_t* _data,
+   uint8_t* _scrl,
+   uint8_t* _pdata) :
+   ctrl(_ctrl), mask(_mask), stat(_status), maddr(_maddr), data(_data), scrl(_scrl), pdata(_pdata) {};
 };
