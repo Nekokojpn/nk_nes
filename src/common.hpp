@@ -212,7 +212,7 @@ public:
    uint8_t* data;
    uint8_t* scrl;
    uint8_t* pdata;
-   uint8_t memo
+   uint8_t memory[0x4000];
    Ppu(uint8_t* _ctrl,
    uint8_t* _mask,
    uint8_t* _status,
