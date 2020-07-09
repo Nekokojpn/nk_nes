@@ -231,4 +231,5 @@ public:
    uint8_t* _paddr,
    uint8_t* _pdata) :
    ctrl(_ctrl), mask(_mask), stat(_status), maddr(_maddr), data(_data), scrl(_scrl), paddr(_paddr), pdata(_pdata) {};
+   void exec(int cycle);
 };
