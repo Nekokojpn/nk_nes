@@ -31,10 +31,11 @@ int main () {
    cpu->registers->pc += 12;
    for(;;) {
 
+		
       cpu->exec(cpu->fetch());
       cpu->bus->ram->debug_print();
       cpu->registers->debug_print();
-	  WaitTimer(1000);
+		WaitTimer(1000);
    }
    //nes->bus->ram->debug_init();
    

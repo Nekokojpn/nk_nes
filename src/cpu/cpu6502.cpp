@@ -24,7 +24,7 @@ uint8_t CPU6502::fetchOpeland() {
    return this->read(this->registers->pc++);
 }
 
-void CPU6502::exec(uint8_t opcode) {
+int CPU6502::exec(uint8_t opcode) {
    auto cur = decoder[opcode];
    //No operand
    if(cur->ty == AddressingMode::Implied) {

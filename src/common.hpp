@@ -82,7 +82,7 @@ public:
    uint8_t fetch();
    uint8_t fetchOpeland();
    void reset();
-   void exec(uint8_t opcode);
+   int exec(uint8_t opcode);
    void init();
 };
 
