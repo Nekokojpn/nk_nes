@@ -81,5 +81,6 @@ int CPU6502::exec(uint8_t opcode) {
          }
       }
    }
+	return cur->ck;
 }
 

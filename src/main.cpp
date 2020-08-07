@@ -30,8 +30,6 @@ int main () {
    }
    cpu->registers->pc += 12;
    for(;;) {
-
-		
       cpu->exec(cpu->fetch());
       cpu->bus->ram->debug_print();
       cpu->registers->debug_print();
