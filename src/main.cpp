@@ -4,7 +4,7 @@ std::vector<std::string> sources;
 
 int main () {
 
-
+    //define CPU instructions.
    define_instructions();
    auto ram = new RAM();
    auto cpu = new CPU6502(
